@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+    <title>WT | Dashboard</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">
+                <div class="header-content">
+                    <div class="branding-container">
+                        <div class="logo">
+                            <img src="/static/image/logo-2-no-bg-no-text.png" alt="">
+                        </div>
+                        <div class="text">
+                            <span class="header-text">WT</span>
+                            <span class="header-sub-text">Working Tracker</span>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <img src="{{ user_data.picture }}" alt="">
+                    </div>
+                </div>
+                <div class="navigation">
+                    <ul class="navigation-list">
+                        <li class="navigation-item">
+                            <a href="/history" class="navigation-link">
+                                <i class='bx bx-history'></i>
+                                <span>History</span>
+                            </a>
+                        </li>
+                        <li class="navigation-item">
+                            <a href="/reports" class="navigation-link">
+                                <i class='bx bx-bar-chart'></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="navigation-item">
+                            <a href="/settings" class="navigation-link">
+                                <i class='bx bx-cog'></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="navigation-item">
+                            <a href="/logout" class="navigation-link">
+                                <i class='bx  bx-arrow-out-left-square-half'></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dashboard-content">
+                <div class="dashboard-content-header">
+                    <span class="dashboard-content-header-text">Welcome back, {{ user_data.name }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/dashboard.js"></script>
+</body>
+
+</html>
