@@ -1,0 +1,14 @@
+{
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/main.py"
+        }
+    ],
+    "crons": [
+        {
+            "path": "/cron/delete-old-meetings",
+            "schedule": "0 0 * * *"
+        }
+    ]
+}
