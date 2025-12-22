@@ -40,6 +40,7 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    background: rgba(251, 249, 255, 1);
 }
 
 .header-content {
@@ -254,4 +255,131 @@ body {
 
 .hidden {
     display: none;
+}
+
+.content {
+    width: 100%;
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.content-card {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.card-header {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.day {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.date {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.card-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 0.5rem;
+    gap: 0.25rem;
+}
+
+.working-place {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.working-with {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.card-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    border: 1px dashed rgba(0, 0, 0, 1);
+}
+
+.special-note {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 0.25rem;
 }
