@@ -222,10 +222,10 @@ body {
 }
 
 .navigation-link span {
-    font-size: 1rem;
-    line-height: 1rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
     font-weight: 400;
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     color: rgba(0, 0, 0, 1);
 }
 
