@@ -36,3 +36,6 @@ def auth():
         return {'status_code': 200}
     except Exception as e:
         return {'status_code': 500, 'error': str(e)}
+
+if __name__ == '__main__':
+    app.run(debug=True)
