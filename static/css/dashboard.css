@@ -538,7 +538,9 @@ body {
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    max-height: 0;
+    opacity: 0;
 }
 
 .add-working-details-content {
@@ -730,4 +732,9 @@ body {
 .add-working-details-body-footer-submit:hover {
     background: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
+}
+
+.add-working-details.open {
+    max-height: 100%;
+    opacity: 1;
 }
