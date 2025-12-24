@@ -429,7 +429,7 @@ body {
     box-sizing: border-box;
     position: absolute;
     bottom: 5rem;
-    right: 3rem;
+    right: 1rem;
 }
 
 .add-btn {
@@ -446,7 +446,7 @@ body {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.75;
     font-size: 1rem;
     line-height: 1rem;
     font-weight: 700;
