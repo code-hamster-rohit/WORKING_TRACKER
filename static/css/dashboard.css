@@ -439,18 +439,23 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding: 1rem;
+    padding: 2rem;
     background: rgba(255, 255, 255, 1);
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 1);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    opacity: 0.5;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 700;
 }
 
 .add-btn:hover {
     background: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
+    opacity: 1;
 }
 
 .footer {
