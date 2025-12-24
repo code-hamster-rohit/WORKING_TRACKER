@@ -239,7 +239,7 @@ body {
 .navigation-link span {
     font-size: 0.75rem;
     line-height: 0.75rem;
-    font-weight: 400;
+    font-weight: 700;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 1);
 }
@@ -247,7 +247,7 @@ body {
 .navigation-link i {
     font-size: 0.75rem;
     line-height: 0.75rem;
-    font-weight: 400;
+    font-weight: 700;
     text-align: left;
 }
 

@@ -18,23 +18,22 @@ expanderBtn.addEventListener('click', () => {
         expanderBtn.classList.toggle('bx-chevron-down');
         expanderBtn.classList.toggle('bx-chevron-up');
     }
-});
 
-document.addEventListener('click', (e) => {
-    const navigationInner = document.querySelector('.navigation-inner');
+    document.addEventListener('click', (e) => {
+        const header = document.querySelector('.header');
+        if (!navigationInner.classList.contains('hidden') &&
+            !navigationInner.contains(e.target) &&
+            !expanderBtn.contains(e.target) &&
+            !header.contains(e.target)) {
 
-    // Check if the menu is open (not hidden) AND the click is outside both the menu and the button
-    if (!navigationInner.classList.contains('hidden') &&
-        !navigationInner.contains(e.target) &&
-        !expanderBtn.contains(e.target)) {
-
-        navigationInner.classList.remove('open');
-        setTimeout(() => {
-            navigationInner.classList.add('hidden');
-        }, 350);
-        expanderBtn.classList.toggle('bx-chevron-down');
-        expanderBtn.classList.toggle('bx-chevron-up');
-    }
+            navigationInner.classList.remove('open');
+            setTimeout(() => {
+                navigationInner.classList.add('hidden');
+            }, 350);
+            expanderBtn.classList.toggle('bx-chevron-down');
+            expanderBtn.classList.toggle('bx-chevron-up');
+        }
+    });
 });
 
 const addWorkingDetailsBtn = document.getElementById('add-working-details-btn');
