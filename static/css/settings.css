@@ -1,0 +1,210 @@
+.settings {
+    width: 100%;
+    height: 100%;
+    margin: 9rem 0 1rem 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.settings-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.card-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.card-header span {
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.card-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.card-item input[type="text"] {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 1);
+}
+
+.card-item input[type="text"]::placeholder {
+    color: rgba(0, 0, 0, 1);
+}
+
+.card-item input[type="submit"] {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 0.25rem;
+    background: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    text-transform: uppercase;
+}
+
+#add-field-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    padding-top: 1rem;
+}
+
+.input-bucket {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(0, 0, 0, 1);
+    border-radius: 0.25rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.input-bucket-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.input-bucket-item-sub {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    gap: 1rem;
+}
+
+.input-bucket-item-sub input[type="text"] {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 1);
+}
+
+.input-bucket-item-sub i {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 1);
+}
+
+.card-body .select-mr {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border: none;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.card-body select {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 1);
+}
+
+#update-mr-field-container {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+#update-hq-field-container {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}

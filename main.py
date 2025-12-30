@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from flask import Flask, send_from_directory, render_template, request, session
+from flask import Flask, send_from_directory, render_template, request, session, redirect, url_for
 from auth import decode_token, extract_info
 from datetime import datetime
 import os
@@ -26,6 +26,12 @@ def dashboard():
     if 'user_data' not in session:
         return redirect(url_for('home'))
     return render_template('dashboard.html', user_data=session['user_data'], today=datetime.now().strftime('%Y-%m-%d'))
+
+@app.route('/settings')
+def settings():
+    if 'user_data' not in session:
+        return redirect(url_for('home'))
+    return render_template('settings.html', user_data=session['user_data'], today=datetime.now().strftime('%Y-%m-%d'))
 
 @app.route('/auth', methods=['POST'])
 def auth():

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/settings.css">
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+    <title>WT | Settings</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">
+                <div class="header-content">
+                    <div class="branding-container">
+                        <div class="logo">
+                            <img src="/static/image/logo-2-no-bg-no-text.png" alt="">
+                        </div>
+                        <div class="text">
+                            <span class="header-text">WT</span>
+                            <span class="header-sub-text">Working Tracker</span>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <img src="{{ user_data.picture }}" alt="">
+                    </div>
+                </div>
+                <div class="navigation">
+                    <ul class="navigation-list">
+                        <div class="navigation-outer">
+                            <li class="navigation-item">
+                                <a href="/history" class="navigation-link">
+                                    <i class='bx bx-history'></i>
+                                    <span>History</span>
+                                </a>
+                            </li>
+                            <li class="navigation-item">
+                                <a href="/reports" class="navigation-link">
+                                    <i class='bx bx-bar-chart'></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="navigation-inner hidden">
+                            <li class="navigation-item">
+                                <a href="/settings" class="navigation-link">
+                                    <i class='bx bx-cog'></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li class="navigation-item">
+                                <a href="/logout" class="navigation-link">
+                                    <i class='bx  bx-arrow-out-left-square-half'></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="expander">
+                            <i class='bx bx-chevron-down' id="expander-btn"></i>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Settings Start -->
+            <div class="settings">
+                <div class="settings-card">
+                    <div class="card-header">
+                        <span>Add Head Quarters</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-item">
+                            <input type="text" id="rep-name" placeholder="Representative Name *" required>
+                        </div>
+                        <div class="card-item">
+                            <input type="text" id="wp-name" placeholder="Working Place Name (Exact) e.g. Arwal *"
+                                required>
+                        </div>
+                        <div class="input-bucket" id="input-bucket"></div>
+                        <div class="card-item" id="add-field-container">
+                            <input type="submit" value="Add Field" id="add-field-btn">
+                            <input type="submit" value="Final Add" id="final-add-btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-card">
+                    <div class="card-header">
+                        <span>Update Head Quarters</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="select-mr">
+                            <select name="mr" id="mr-update" required>
+                                <option value="" disabled selected>Select MR</option>
+                            </select>
+                            <select name="hq" id="hq-update" required>
+                                <option value="" disabled selected>Select HQ</option>
+                            </select>
+                        </div>
+                        <div class="input-bucket" id="hq-bucket-update"></div>
+                        <div class="card-item" id="update-hq-field-container">
+                            <input type="submit" value="Update" id="update-hq-btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-card">
+                    <div class="card-header">
+                        <span>Update MR Details</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="select-mr">
+                            <select name="mr" id="mr" required>
+                                <option value="" disabled selected>Select MR</option>
+                            </select>
+                        </div>
+                        <div class="input-bucket" id="mr-bucket"></div>
+                        <div class="card-item" id="update-mr-field-container">
+                            <input type="submit" value="Update" id="update-mr-btn">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Settings End -->
+
+            <div class="footer">
+                <div class="footer-content">
+                    <div class="footer-item">
+                        &copy; 2025 WT (Working Tracker). <a href="/privacy-policy">Privacy Policy</a> | <a
+                            href="/terms-conditions">Terms &
+                            Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/settings.js"></script>
+</body>
+
+</html>
