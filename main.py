@@ -91,5 +91,27 @@ def update_mr_details():
     except Exception as e:
         return {'status_code': 500, 'error': str(e)}
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/add_working', methods=['POST'])
+def add_working():
+    if 'user_data' not in session:
+        return redirect(url_for('home'))
+    try:
+        data = request.json
+        add('WORKING_TRACKER', 'WORKING_DETAILS', data)
+        return {'status_code': 200, 'message': 'Working Details Added Successfully'}
+    except Exception as e:
+        return {'status_code': 500, 'error': str(e)}
+
+@app.route('/get_working_details', methods=['GET'])
+def get_working_details():
+    if 'user_data' not in session:
+        return redirect(url_for('home'))
+    try:
+        data = get_all('WORKING_TRACKER', 'WORKING_DETAILS', {})
+        for item in data: del item['_id']
+        return {'status_code': 200, 'data': data}
+    except Exception as e:
+        return {'status_code': 500, 'error': str(e)}
+
+# if __name__ == '__main__':
+#     app.run(debug=True)

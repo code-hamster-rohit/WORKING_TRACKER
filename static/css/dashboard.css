@@ -266,6 +266,7 @@ body {
 
 .content {
     width: 100%;
+    height: auto;
     margin-top: 9rem;
     box-sizing: border-box;
     padding: 1rem;
@@ -430,6 +431,7 @@ body {
     position: absolute;
     bottom: 4.5rem;
     right: 1.5rem;
+    border-radius: 50%;
 }
 
 .add-btn {
@@ -704,6 +706,10 @@ body {
     align-items: center;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+}
+
+.add-working-details-body-content-item select {
     text-transform: uppercase;
 }
 

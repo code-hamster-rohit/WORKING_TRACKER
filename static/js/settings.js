@@ -76,6 +76,7 @@ finalAddBtn.addEventListener('click', async () => {
     if (data.status_code === 200) {
         alert(data.message);
         inputBucket.innerHTML = '';
+        getHqDetails();
     } else {
         alert(data.error);
     }
@@ -188,8 +189,6 @@ async function getHqDetails() {
     }
 }
 
-getHqDetails();
-
 async function addFieldMrEdit() {
     const mrEditSelect = document.getElementById('mr-edit');
     const mrEditSelectValue = mrEditSelect.value;
@@ -259,6 +258,8 @@ updateHqBtn.addEventListener('click', async () => {
     const data = await response.json();
     if (data.status_code === 200) {
         alert(data.message);
+        hqBucket.innerHTML = '';
+        getHqDetails();
     } else {
         alert(data.error);
     }
@@ -288,7 +289,11 @@ updateMrBtn.addEventListener('click', async () => {
     const data = await response.json();
     if (data.status_code === 200) {
         alert(data.message);
+        mrBucket.innerHTML = '';
+        getHqDetails();
     } else {
         alert(data.error);
     }
 });
+
+getHqDetails();
