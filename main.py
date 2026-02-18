@@ -113,5 +113,5 @@ def get_working_details():
     except Exception as e:
         return {'status_code': 500, 'error': str(e)}
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
