@@ -1,0 +1,67 @@
+{% extends "build.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="../static/css/add_working.css">
+{% endblock %}
+
+{% block title %}Working Tracker | Add Working{% endblock %}
+
+{% block content %}
+<div class="button-container">
+    <button class="settings-button" onclick="window.location.href='/settings'">Settings</button>
+    <button class="previous-workings-button" onclick="window.location.href='/previous-workings'">Prev
+        Workings</button>
+</div>
+
+<form action="/add-working" method="post">
+    <div class="input-group">
+        <input type="date" name="date" id="date" value="{{ date }}" required placeholder=" ">
+        <label for="date">Date</label>
+    </div>
+    <div class="input-group-row">
+        <div class="input-group">
+            <select name="working-with" id="working-with" required>
+                <option value="" disabled selected hidden></option>
+                {% for person in working_with %}
+                <option value="{{ person }}">{{ person.upper() }}</option>
+                {% endfor %}
+            </select>
+            <label for="working-with">Working With</label>
+        </div>
+        <div class="input-group">
+            <select name="working-place" id="working-place" required>
+                <option value="" disabled selected hidden></option>
+            </select>
+            <label for="working-place">Working Place</label>
+        </div>
+    </div>
+    <div class="input-group-row">
+        <div class="input-group">
+            <input type="number" name="doctor-calls" id="doctor-calls" required placeholder=" " min="0">
+            <label for="doctor-calls">Doctor Calls</label>
+        </div>
+        <div class="input-group">
+            <input type="number" name="chemist-visits" id="chemist-visits" required placeholder=" " min="0">
+            <label for="chemist-visits">Chemist Visits</label>
+        </div>
+    </div>
+    <div class="input-group-row">
+        <div class="input-group">
+            <textarea name="note" id="note" placeholder="E.g. Taxi Tour, Napkin Distribution, ..."></textarea>
+            <label for="note">Note</label>
+        </div>
+        <div class="input-group">
+            <textarea name="remarks" id="remarks" placeholder=" "></textarea>
+            <label for="remarks">Remarks</label>
+        </div>
+    </div>
+    <button type="submit">Add Working</button>
+</form>
+{% endblock %}
+
+{% block script %}
+<script>
+    const placesData = JSON.parse('{{ representative_details[0] | tojson | safe }}');
+</script>
+<script src="../static/js/add_working.js"></script>
+{% endblock %}

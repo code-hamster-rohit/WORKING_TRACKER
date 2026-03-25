@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="apple-touch-icon" href="/static/images/logo.png">
+    <link rel="stylesheet" href="../static/css/style.css">
+    {% block style %}
+    {% endblock %}
+    <title>{% block title %}Working Tracker | Home{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <img src="../static/images/logo.png" alt="Logo">
+        <div>
+            <h1>Working Tracker</h1>
+            <p>Daily Report Generator</p>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        Developed by <a href="https://github.com/code-hamster-rohit">Rohit Kumar</a> | <a
+            href="https://github.com/code-hamster-rohit/working-tracker">GitHub</a> | <a
+            href="https://github.com/code-hamster-rohit/working-tracker/issues">Report Bug</a>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.error('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>

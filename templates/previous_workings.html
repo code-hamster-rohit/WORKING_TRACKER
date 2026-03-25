@@ -1,0 +1,62 @@
+{% extends "build.html" %}
+
+{% block title %}Working Tracker | Previous Workings{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="../static/css/previous_workings.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="button-container">
+    <button class="add-working-button" onclick="window.location.href='/'">Add Working</button>
+    <button class="settings-button" onclick="window.location.href='/settings'">Settings</button>
+</div>
+
+<div class="previous-workings-list">
+    {% for working in previous_workings %}
+    <form class="previous-working" action="/update-working" method="post">
+        <input type="hidden" name="id" value="{{ working['_id'] }}">
+        <div class="input-group">
+            <input type="date" name="date" value="{{ working.date }}" readonly>
+            <label for="date">Date</label>
+        </div>
+        <div class="input-group-row">
+            <div class="input-group">
+                <input type="text" name="working-with" value="{{ working['working-with'].upper() }}" readonly>
+                <label for="working-with">Working With</label>
+            </div>
+            <div class="input-group">
+                <input type="text" name="working-place" value="{{ working['working-place'].upper() }}" readonly>
+                <label for="working-place">Working Place</label>
+            </div>
+        </div>
+        <div class="input-group-row">
+            <div class="input-group">
+                <input type="number" name="doctor-calls" value="{{ working['doctor-calls'] }}" readonly>
+                <label for="doctor-calls">Doctor Calls</label>
+            </div>
+            <div class="input-group">
+                <input type="number" name="chemist-visits" value="{{ working['chemist-visits'] }}" readonly>
+                <label for="chemist-visits">Chemist Visits</label>
+            </div>
+        </div>
+        <div class="input-group-row">
+            <div class="input-group">
+                <textarea type="text" name="note" readonly>{{ working['note'] }}</textarea>
+                <label for="note">Note</label>
+            </div>
+            <div class="input-group">
+                <textarea type="text" name="remarks" readonly>{{ working['remarks'] }}</textarea>
+                <label for="remarks">Remarks</label>
+            </div>
+        </div>
+        <button type="button" class="edit-button" data-editing="false">Edit</button>
+    </form>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="../static/js/previous_workings.js"></script>
+{% endblock %}

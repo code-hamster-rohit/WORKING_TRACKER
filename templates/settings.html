@@ -1,0 +1,42 @@
+{% extends "build.html" %}
+
+{% block title %}Working Tracker | Settings{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="../static/css/settings.css">
+{% endblock %}
+
+{% block content %}
+<div class="button-container">
+    <button class="add-working-button" onclick="window.location.href='/'">Add Working</button>
+    <button class="previous-workings-button" onclick="window.location.href='/previous-workings'">Prev
+        Workings</button>
+</div>
+<form action="/settings" method="post" class="settings" id="settings-form">
+    <div class="input-group">
+        <input type="text" list="names-list" name="name" id="name" placeholder=" " required autocomplete="off">
+        <datalist id="names-list">
+            {% for person in working_with %}
+            <option value="{{ person.upper() }}"></option>
+            {% endfor %}
+        </datalist>
+        <label for="name">Working With</label>
+    </div>
+    <div class="input-group">
+        <input type="text" name="place" id="place" placeholder=" " required>
+        <label for="place">Working Places (semicolon separated)</label>
+    </div>
+    <div class="button-group">
+        <button type="submit" name="action" value="update" class="update-working-places">Save</button>
+        <button type="submit" name="action" value="delete" class="delete-working-places" id="delete-btn" style="display: none;">Delete</button>
+    </div>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    const placesData = JSON.parse('{{ representative_details[0] | tojson | safe }}');
+</script>
+<script src="../static/js/settings.js"></script>
+{% endblock %}
