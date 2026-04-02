@@ -6,6 +6,9 @@
     max-width: 400px;
     position: fixed;
     top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 1rem;
     margin: 0 auto;
     z-index: 2;
 }
