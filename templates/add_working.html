@@ -8,7 +8,6 @@
 
 {% block content %}
 <div class="button-container">
-    <button class="settings-button" onclick="window.location.href='/settings'">Settings</button>
     <button class="previous-workings-button" onclick="window.location.href='/previous-workings'">Prev
         Workings</button>
 </div>
@@ -20,18 +19,11 @@
     </div>
     <div class="input-group-row">
         <div class="input-group">
-            <select name="working-with" id="working-with" required>
-                <option value="" disabled selected hidden></option>
-                {% for person in working_with %}
-                <option value="{{ person }}">{{ person.upper() }}</option>
-                {% endfor %}
-            </select>
+            <input type="text" name="working-with" id="working-with" required placeholder=" ">
             <label for="working-with">Working With</label>
         </div>
         <div class="input-group">
-            <select name="working-place" id="working-place" required>
-                <option value="" disabled selected hidden></option>
-            </select>
+            <input type="text" name="working-place" id="working-place" required placeholder=" ">
             <label for="working-place">Working Place</label>
         </div>
     </div>
@@ -60,8 +52,5 @@
 {% endblock %}
 
 {% block script %}
-<script>
-    const placesData = JSON.parse('{{ representative_details[0] | tojson | safe }}');
-</script>
 <script src="../static/js/add_working.js"></script>
 {% endblock %}

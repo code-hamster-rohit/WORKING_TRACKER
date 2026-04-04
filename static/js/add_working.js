@@ -8,20 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    const workingWithSelect = document.getElementById('working-with');
-    const workingPlaceSelect = document.getElementById('working-place');
-
-    workingWithSelect.addEventListener('change', function () {
-        const selectedPerson = this.value;
-        const places = placesData[selectedPerson] || [];
-        workingPlaceSelect.innerHTML = '<option value="" disabled selected hidden></option>';
-        places.forEach(function (place) {
-            const option = document.createElement('option');
-            option.value = place;
-            option.textContent = place.toUpperCase();
-            workingPlaceSelect.appendChild(option);
-        });
-    });
 
     const dateInput = document.getElementById("date");
     const today = new Date();

@@ -1,37 +1,14 @@
 .button-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+    max-width: 480px;
     width: 100%;
-    max-width: 400px;
     position: fixed;
     top: 5rem;
     left: 50%;
     transform: translateX(-50%);
-    padding: 0 1rem;
-    margin: 0 auto;
     z-index: 2;
-}
-
-.settings-button {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 600;
-    color: #fff;
-    background-color: #000;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.8rem 2rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    width: 100%;
-    max-width: 400px;
+    padding: 0 2.5rem;
+    margin: 0 auto;
     box-sizing: border-box;
-}
-
-.settings-button:hover {
-    background-color: #333;
 }
 
 .add-working-button {
@@ -62,7 +39,7 @@
     justify-content: center;
     width: 100%;
     gap: 1rem;
-    margin: 7.5rem auto 5rem auto;
+    margin: 8rem auto 2rem auto;
 }
 
 .previous-working {
