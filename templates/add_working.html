@@ -15,26 +15,26 @@
 <form action="/add-working" method="post">
     <div class="input-group">
         <input type="date" name="date" id="date" value="{{ date }}" required placeholder=" ">
-        <label for="date">Date</label>
+        <label for="date">Date *</label>
     </div>
     <div class="input-group-row">
         <div class="input-group">
             <input type="text" name="working-with" id="working-with" required placeholder=" ">
-            <label for="working-with">Working With</label>
+            <label for="working-with">Working With *</label>
         </div>
         <div class="input-group">
             <input type="text" name="working-place" id="working-place" required placeholder=" ">
-            <label for="working-place">Working Place</label>
+            <label for="working-place">Working Place *</label>
         </div>
     </div>
     <div class="input-group-row">
         <div class="input-group">
             <input type="number" name="doctor-calls" id="doctor-calls" required placeholder=" " min="0">
-            <label for="doctor-calls">Doctor Calls</label>
+            <label for="doctor-calls">Doctor Calls *</label>
         </div>
         <div class="input-group">
             <input type="number" name="chemist-visits" id="chemist-visits" required placeholder=" " min="0">
-            <label for="chemist-visits">Chemist Visits</label>
+            <label for="chemist-visits">Chemist Visits *</label>
         </div>
     </div>
     <div class="input-group-row">
@@ -52,5 +52,11 @@
 {% endblock %}
 
 {% block script %}
+<script>
+    const error = "{{ error }}";
+    if (error) {
+        alert(error);
+    }
+</script>
 <script src="../static/js/add_working.js"></script>
 {% endblock %}

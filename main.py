@@ -32,6 +32,10 @@ async def health_check():
 async def service_worker():
     return FileResponse("static/sw.js", media_type="application/javascript")
 
+@app.get("/add-working", response_class=HTMLResponse)
+async def add_working_page(request: Request):
+    return templates.TemplateResponse(request=request, name="add_working.html")
+
 @app.post("/add-working")
 async def add_working(request: Request):
     data = await request.form()
@@ -43,6 +47,11 @@ async def add_working(request: Request):
     data["working-place"] = data["working-place"].lower()
     data["note"] = data["note"].lower()
     data["remarks"] = data["remarks"].lower()
+    
+    workings = get_all("WORKING_TRACKER", "WORKING_DETAILS", {})
+    if workings and workings[-1]["date"] == datetime.datetime.now().strftime("%Y-%m-%d"):
+        return templates.TemplateResponse(request=request, name="add_working.html", context={"error": "Working for today is already present"})
+    
     add("WORKING_TRACKER", "WORKING_DETAILS", data)
     return templates.TemplateResponse(request=request, name="previous_workings.html", context={"previous_workings": sorted(get_all("WORKING_TRACKER", "WORKING_DETAILS", {}), key=lambda x: x["date"])[::-1]})
 
