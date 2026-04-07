@@ -86,7 +86,40 @@ main {
     background: rgba(255, 255, 255, 0.5);
 }
 
-footer {
+.footer-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    width: max-content;
+    background: rgba(250, 250, 250, 1);
+    border-radius: 1rem 1rem 0 0;
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.1);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    box-sizing: border-box;
+}
+
+.footer-top a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.footer-top a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.footer-bottom {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -109,14 +142,14 @@ footer {
     box-sizing: border-box;
 }
 
-footer a {
+.footer-bottom a {
     text-decoration: none;
     color: #333;
     font-size: 0.75rem;
     line-height: 1rem;
 }
 
-footer a:hover {
+.footer-bottom a:hover {
     color: #000;
     text-decoration: underline;
 }
