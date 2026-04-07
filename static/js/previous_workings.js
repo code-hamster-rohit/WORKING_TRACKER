@@ -7,7 +7,6 @@ document.querySelectorAll('.edit-button').forEach(button => {
             this.textContent = 'Save';
             this.type = 'submit';
 
-            // Allow editing most fields, keep date readonly
             form.querySelectorAll('input:not([type="date"]):not([type="hidden"]), textarea').forEach(input => {
                 input.removeAttribute('readonly');
             });
