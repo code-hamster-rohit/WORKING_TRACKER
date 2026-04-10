@@ -49,7 +49,7 @@ async def add_working(request: Request):
     data["remarks"] = data["remarks"].lower()
     
     workings = get_all("WORKING_TRACKER", "WORKING_DETAILS", {})
-    if workings and datetime.datetime.now().strftime("%Y-%m-%d") in [working["date"] for working in workings]:
+    if workings and data["date"] in [working["date"] for working in workings]:
         return templates.TemplateResponse(request=request, name="add_working.html", context={"error": "Working for today is already present"})
     
     add("WORKING_TRACKER", "WORKING_DETAILS", data)
