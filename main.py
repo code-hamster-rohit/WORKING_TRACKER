@@ -40,7 +40,7 @@ async def add_working_page(request: Request):
 async def add_working(request: Request):
     data = await request.form()
     data = dict(data)
-    data["date"] = datetime.datetime.now().strftime("%Y-%m-%d")
+    data["date"] = datetime.datetime.strptime(data["date"], "%Y-%m-%d").strftime("%Y-%m-%d")
     data["doctor-calls"] = int(data["doctor-calls"])
     data["chemist-visits"] = int(data["chemist-visits"])
     data["working-with"] = data["working-with"].lower()
@@ -50,6 +50,7 @@ async def add_working(request: Request):
     
     workings = get_all("WORKING_TRACKER", "WORKING_DETAILS", {})
     if workings and data["date"] in [working["date"] for working in workings]:
+        print(workings, data["date"])
         return templates.TemplateResponse(request=request, name="add_working.html", context={"error": "Working for today is already present"})
     
     add("WORKING_TRACKER", "WORKING_DETAILS", data)
