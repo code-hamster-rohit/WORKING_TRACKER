@@ -37,3 +37,11 @@ def update(data_base, collection, query, data):
     except Exception as e:
         print(e)
         return False
+
+def delete_document(data_base, collection, query):
+    try:
+        client[data_base][collection].delete_one(query)
+        return True
+    except Exception as e:
+        print(e)
+        return False

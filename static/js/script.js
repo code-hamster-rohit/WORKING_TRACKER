@@ -8,3 +8,4 @@ buttons.forEach(button => {
         button.classList.add('active');
     }
 });
+

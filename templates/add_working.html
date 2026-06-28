@@ -12,7 +12,7 @@
     <button class="previous-workings-button" onclick="window.location.href='/previous-workings'">Prev Workings</button>
 </div>
 
-<form action="/add-working" method="post">
+<form action="/add-working" method="post" onsubmit="showPreloader()">
     <div class="input-group">
         <input type="date" name="date" id="date" value="{{ date }}" required placeholder=" ">
         <label for="date">Date *</label>

@@ -10,5 +10,11 @@
       "src": "/(.*)",
       "dest": "main.py"
     }
+  ],
+  "crons": [
+    {
+      "path": "/backup",
+      "schedule": "0 0 1 * *"
+    }
   ]
 }
