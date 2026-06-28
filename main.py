@@ -268,6 +268,7 @@ def debug_gdrive():
     }
     
     import os, json
+    from gdrive_service import get_gdrive_service
     creds_json_str = os.environ.get("GCP_SERVICE_ACCOUNT_JSON")
     debug_info["env_var_present"] = bool(creds_json_str)
     
