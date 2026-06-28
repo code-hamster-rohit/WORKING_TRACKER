@@ -25,10 +25,14 @@ def get_gdrive_service():
 def get_or_create_folder(service, folder_name="WorkingTrackerBackups"):
     # Search for the folder
     query = f"mimeType='application/vnd.google-apps.folder' and name='{folder_name}' and trashed=false"
-    results = service.files().list(q=query, spaces='drive', fields='nextPageToken, files(id, name)').execute()
+    results = service.files().list(q=query, spaces='drive', fields='nextPageToken, files(id, name, shared)').execute()
     items = results.get('files', [])
     
     if items:
+        # Prefer the folder shared by the user over one created by the bot
+        for item in items:
+            if item.get('shared', False):
+                return item['id']
         return items[0]['id']
     else:
         # Create the folder
