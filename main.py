@@ -114,6 +114,7 @@ async def backup_data(request: Request):
         json_path = os.path.join(tmp_dir, json_filename)
         zip_path = os.path.join(tmp_dir, zip_filename)
         
+        combined_data = month_workings
         if month_key in backup_months:
             tmp_download = os.path.join(tmp_dir, f"temp_{zip_filename}")
             try:
@@ -129,12 +130,12 @@ async def backup_data(request: Request):
                         if w["date"] not in existing_dates:
                             existing_data.append(w)
                             
-                    month_workings = sorted(existing_data, key=lambda x: x["date"])
+                    combined_data = sorted(existing_data, key=lambda x: x["date"])
             except Exception as e:
                 print(f"Error merging existing backup for {month_key}:", e)
         
         with open(json_path, 'w') as f:
-            json.dump(month_workings, f, indent=4)
+            json.dump(combined_data, f, indent=4)
             
         with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             zipf.write(json_path, json_filename)
@@ -142,7 +143,8 @@ async def backup_data(request: Request):
         try:
             upload_file(zip_path, zip_filename)
             for w in month_workings:
-                delete_document("WORKING_TRACKER", "WORKING_DETAILS", {"_id": ObjectId(w["_id"])})
+                if "_id" in w and w["_id"]:
+                    delete_document("WORKING_TRACKER", "WORKING_DETAILS", {"_id": ObjectId(w["_id"])})
         except Exception as e:
             return JSONResponse({"status": "error", "message": str(e)})
             
