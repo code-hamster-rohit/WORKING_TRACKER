@@ -14,6 +14,8 @@ def get_gdrive_service():
     creds_json_str = os.environ.get("GCP_SERVICE_ACCOUNT_JSON")
     if creds_json_str:
         creds_dict = json.loads(creds_json_str)
+        if 'private_key' in creds_dict:
+            creds_dict['private_key'] = creds_dict['private_key'].replace('\\n', '\n')
         creds = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
     elif os.path.exists('service_account.json'):
         creds = service_account.Credentials.from_service_account_file('service_account.json', scopes=SCOPES)
