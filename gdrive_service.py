@@ -64,8 +64,9 @@ def upload_file(filepath, filename):
 
 def download_file(filename, destination_path):
     service = get_gdrive_service()
+    folder_id = get_or_create_folder(service)
     
-    results = service.files().list(q=f"name='{filename}' and trashed=false",
+    results = service.files().list(q=f"name='{filename}' and '{folder_id}' in parents and trashed=false",
                                    spaces='drive',
                                    fields='nextPageToken, files(id, name)').execute()
     items = results.get('files', [])
@@ -84,9 +85,10 @@ def download_file(filename, destination_path):
 def get_available_backup_months():
     try:
         service = get_gdrive_service()
-        results = service.files().list(q=f"name contains 'backup_' and trashed=false",
+        folder_id = get_or_create_folder(service)
+        results = service.files().list(q=f"name contains 'backup_' and name contains '.zip' and '{folder_id}' in parents and trashed=false",
                                        spaces='drive',
-                                       fields='files(name)').execute()
+                                       fields='files(id, name)').execute()
         files = results.get('files', [])
         months = []
         for f in files:
