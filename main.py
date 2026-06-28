@@ -255,3 +255,49 @@ async def update_working(request: Request):
         
     grouped_workings, selected_month, min_month, max_month = get_grouped_workings(data.get("date", "")[:7] if data.get("date") else None)
     return templates.TemplateResponse(request=request, name="previous_workings.html", context={"grouped_workings": grouped_workings, "selected_month": selected_month, "min_month": min_month, "max_month": max_month})
+
+@app.get("/debug-gdrive")
+def debug_gdrive():
+    debug_info = {
+        "env_var_present": False,
+        "service_created": False,
+        "folders_found": [],
+        "chosen_folder_id": None,
+        "files_found": [],
+        "errors": []
+    }
+    
+    import os, json
+    creds_json_str = os.environ.get("GCP_SERVICE_ACCOUNT_JSON")
+    debug_info["env_var_present"] = bool(creds_json_str)
+    
+    try:
+        service = get_gdrive_service()
+        debug_info["service_created"] = True
+        
+        # Test folder finding
+        query = "mimeType='application/vnd.google-apps.folder' and name='WorkingTrackerBackups' and trashed=false"
+        folder_results = service.files().list(q=query, spaces='drive', fields='nextPageToken, files(id, name, shared)').execute()
+        items = folder_results.get('files', [])
+        debug_info["folders_found"] = items
+        
+        folder_id = None
+        if items:
+            for item in items:
+                if item.get('shared', False):
+                    folder_id = item['id']
+                    break
+            if not folder_id:
+                folder_id = items[0]['id']
+        debug_info["chosen_folder_id"] = folder_id
+        
+        if folder_id:
+            # Test file finding
+            q = f"name contains 'backup_' and name contains '.zip' and '{folder_id}' in parents and trashed=false"
+            file_results = service.files().list(q=q, spaces='drive', fields='files(id, name)').execute()
+            debug_info["files_found"] = file_results.get('files', [])
+            
+    except Exception as e:
+        debug_info["errors"].append(str(e))
+        
+    return JSONResponse(content=debug_info)
