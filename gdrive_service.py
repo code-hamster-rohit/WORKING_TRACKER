@@ -49,7 +49,7 @@ def get_gdrive_service():
             else:
                 add("WORKING_TRACKER", "GDRIVE_TOKENS", token_data)
 
-    return build('drive', 'v3', credentials=creds)
+    return build('drive', 'v3', credentials=creds, cache_discovery=False)
 
 def get_or_create_folder(service, folder_name="WorkingTrackerBackups"):
     # Search for the folder
