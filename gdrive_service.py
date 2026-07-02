@@ -1,26 +1,53 @@
 import os
 import io, json
-from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+from db.rules import get_all, add, update
 
-# If modifying these scopes, delete the file token.json.
+# If modifying these scopes, delete the token from MongoDB.
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def get_gdrive_service():
-    """Shows basic usage of the Drive v3 API.
-    Prints the names and ids of the first 10 files the user has access to.
-    """
-    creds_json_str = os.environ.get("GCP_SERVICE_ACCOUNT_JSON")
-    if creds_json_str:
-        creds_dict = json.loads(creds_json_str)
-        if 'private_key' in creds_dict:
-            creds_dict['private_key'] = creds_dict['private_key'].replace('\\n', '\n')
-        creds = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
-    elif os.path.exists('service_account.json'):
-        creds = service_account.Credentials.from_service_account_file('service_account.json', scopes=SCOPES)
-    else:
-        raise Exception("Missing Service Account Credentials. Please set GCP_SERVICE_ACCOUNT_JSON env var or provide service_account.json file.")
+    """Shows basic usage of the Drive v3 API."""
+    creds = None
+    
+    # Try to load token from MongoDB
+    tokens = get_all("WORKING_TRACKER", "GDRIVE_TOKENS", {})
+    if tokens:
+        token_data = tokens[0]
+        # Remove mongo _id for credentials initialization
+        token_data.pop('_id', None)
+        creds = Credentials.from_authorized_user_info(token_data, SCOPES)
+        
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+            # Update token in MongoDB
+            if tokens:
+                token_data = json.loads(creds.to_json())
+                update("WORKING_TRACKER", "GDRIVE_TOKENS", {}, token_data)
+        else:
+            # We must have credentials.json to do the initial flow
+            creds_json_str = os.environ.get("GCP_OAUTH_CREDENTIALS_JSON")
+            if creds_json_str:
+                creds_dict = json.loads(creds_json_str)
+                flow = InstalledAppFlow.from_client_config(creds_dict, SCOPES)
+            elif os.path.exists('credentials.json'):
+                flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            else:
+                raise Exception("Missing OAuth credentials. Provide GCP_OAUTH_CREDENTIALS_JSON or credentials.json")
+            
+            creds = flow.run_local_server(port=0)
+            
+            # Save token to MongoDB
+            token_data = json.loads(creds.to_json())
+            if tokens:
+                update("WORKING_TRACKER", "GDRIVE_TOKENS", {}, token_data)
+            else:
+                add("WORKING_TRACKER", "GDRIVE_TOKENS", token_data)
 
     return build('drive', 'v3', credentials=creds)
 
