@@ -1,11 +1,12 @@
 import os
 import json
 from dotenv import load_dotenv
+
+# Load environment variables (like MONGO_URI) BEFORE importing db modules
+load_dotenv()
+
 from google_auth_oauthlib.flow import InstalledAppFlow
 from db.rules import get_all, add, update
-
-# Load environment variables (like MONGO_URI)
-load_dotenv()
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
